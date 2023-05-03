@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h3>😍Best Jokes to make your day👻</h3>
+        <div id="joke" class="joke"> Mindblowing Joke is loading...</div>
+        <button class="btn" id="jokeBtn">Next JOKE</button>
+    </div>
+    
+    <script>
+      const jokes = document.getElementById("joke");
+      const jokesBtn = document.getElementById("jokeBtn");
+    
+      // Using Promises
+
+     // function generateJokes(){
+    
+        // const setHeader = {
+        //     headers:{
+        //         Accept : "application/json"
+        //     }
+        // }
+
+        // fetch("https://icanhazdadjoke.com", setHeader)
+        // .then((response)=> response.json())
+        // .then((data)=>{
+        //     jokes.innerHTML=data.joke;
+        // })
+        // .catch((error)=>{
+        //     console.log("error");
+        // })
+
+        
+     // }
+     
+      // Using Async Await
+        
+     async function  generateJokes(){
+        
+        try{
+        const setHeader = {
+            headers:{
+                Accept : "application/json"
+            }
+        }
+
+        const response = await fetch("https://icanhazdadjoke.com", setHeader)
+        const data = await response.json();
+        jokes.innerHTML=data.joke;
+        }catch(err){
+        console.log(`the error is ${err}`);
+        }
+        
+     }
+
+      jokesBtn.addEventListener('click',generateJokes);
+       
+      generateJokes();
+      
+    </script>
+</body>
+</html>
